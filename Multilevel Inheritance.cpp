@@ -3,14 +3,14 @@ using namespace std;
 
 class orang
 {
-	private:
+    private :
     char nama[30];
     int umur;
-public :
+public:
     void get()         //konstruktor
     {
         cout<<"Nama : ";
-        cin.getline(nama,30);
+        cin>>nama;
         cout<<"Umur : ";
         cin>>umur;
     }
@@ -20,52 +20,54 @@ public :
         cout<<"Umur         : "<<umur<<endl;
     }
 };
-       class Mahasiswa : public orang //definisi kelas turunan level 1
+        class  Mahasiswa : public orang//definisi kelas turunan level 1
 {
-	private :
-	string kampus;
-	int NIM;
-	public :
-		void get()
-		{
-			orang :: get();
-			cout<<"Nama Kampus : ";
-			cin>>kampus;
-			cout<<"NIM : ";
-			cin>>NIM;
-		}
-		void display()
-		{
-			orang::display();
-			cout<<"Nama Kampus : "<<kampus<<endl;
-			cout<<"NIM		   : "<<NIM<<endl;
-		}    
-};
-        class Engineer : public Mahasiswa
-{
-	private:
-    string sertf;
-    public:
+    private:
+    char kampus[100];
+    int NIM;
+    public :
     void get()
-    	{		
-    		Mahasiswa::get();
-    		cout<<"Sertifikat Bid. Telekomunikasi: ";
-    		cin>>sertf;
-		}
-		void display()
-		{
-		Mahasiswa::display();
-		cout<<"Sertifikasi Bid. Telekomunikasi: "<<sertf;
-		}
+    {
+        
+        orang :: get();
+        cin.ignore();
+        cout<<"Nama Kampus : ";
+        cin>>kampus;
+        cout<<"NIM  : ";
+        cin>>NIM;
+    }
+    void display()
+    {
+        orang::display();
+        cout<<"Nama Kampus  : "<<kampus<<endl;
+        cout<<"NIM          : "<<NIM<<endl;
+    }
+};
+    class Engineer : public Mahasiswa         //Definisi kelas turunan level 2
+{
+    private :
+    char sertf[100];
+    public :
+    void get()
+    {
+        Mahasiswa::get();
+        cin.ignore();
+        cout<<"Sertifikasi Bid. Telekomunikasi: ";
+        cin.getline(sertf,100);
+    }
+    void display()
+    {
+        Mahasiswa::display();
+        cout<<"Sertifikasi Bid. Telekomunikasi: "<<sertf;
+    }
 };
 int main()
 {
-	Engineer E1;
-    cout<<"===MASUKAN DATA==="<<endl;
+    Engineer E1;
+    cout<<"====MASUKAN DATA===="<<endl;
     E1.get();
     cout<<"\n\n++++TAMPILKAN DATA++++"<<endl;
-    
     E1.display();
     return 0;
+    
 }
-
